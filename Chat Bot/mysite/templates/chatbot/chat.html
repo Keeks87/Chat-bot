@@ -19,7 +19,9 @@
             let userText = inputField.value;
             inputField.value = '';
             addMessageToDOM('You', userText);
-            fetch(`/chatbot/response/?message=${encodeURIComponent(userText)}`)
+            const url = `/chatbot/response/?message=${encodeURIComponent(userText)}`;
+            console.log("Requesting URL:", url);
+            fetch(url)
                 .then(response => response.text())
                 .then(data => addMessageToDOM('Bot', data));
         }
